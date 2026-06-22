@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AchieveResumeCraft — Gamer CV Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <div class="topnav-brand">
+    <span class="brand-icon">⚡</span>
+    <span class="brand-name">AchieveResume<span class="brand-accent">Craft</span></span>
+  </div>
+  <div class="topnav-actions">
+    <button class="btn-icon" id="themeToggle" title="Toggle Theme">🌙</button>
+    <button class="btn-secondary" id="previewBtn">👁 Preview</button>
+    <button class="btn-primary" id="printBtn">🖨 Print PDF</button>
+  </div>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="app-layout">
+
+  <!-- SIDEBAR STEP NAVIGATOR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">SECTIONS</div>
+    <nav class="step-nav">
+      <button class="step-item active" data-step="identity">
+        <span class="step-icon">🎮</span>
+        <span class="step-text">Identitas Gamer</span>
+        <span class="step-dot"></span>
+      </button>
+      <button class="step-item" data-step="games">
+        <span class="step-icon">🕹</span>
+        <span class="step-text">Game Dimainkan</span>
+        <span class="step-dot"></span>
+      </button>
+      <button class="step-item" data-step="stats">
+        <span class="step-icon">📊</span>
+        <span class="step-text">Statistik & Rank</span>
+        <span class="step-dot"></span>
+      </button>
+      <button class="step-item" data-step="achievements">
+        <span class="step-icon">🏆</span>
+        <span class="step-text">Achievement</span>
+        <span class="step-dot"></span>
+      </button>
+      <button class="step-item" data-step="tournaments">
+        <span class="step-icon">⚔️</span>
+        <span class="step-text">Turnamen</span>
+        <span class="step-dot"></span>
+      </button>
+      <button class="step-item" data-step="screenshots">
+        <span class="step-icon">📸</span>
+        <span class="step-text">Screenshots</span>
+        <span class="step-dot"></span>
+      </button>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-label">TEMPLATE</div>
+    <div class="template-picker">
+      <button class="template-btn active" data-template="classic" title="Classic">
+        <div class="template-thumb classic-thumb"></div>
+        <span>Classic</span>
+      </button>
+      <button class="template-btn" data-template="cyber" title="Cyber">
+        <div class="template-thumb cyber-thumb"></div>
+        <span>Cyber</span>
+      </button>
+      <button class="template-btn" data-template="minimal" title="Minimal">
+        <div class="template-thumb minimal-thumb"></div>
+        <span>Minimal</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT (FORM + DRAG-DROP) -->
+  <main class="main-content">
+
+    <!-- SECTION: IDENTITAS GAMER -->
+    <section class="form-section active" id="section-identity">
+      <div class="section-hud">
+        <span class="hud-line"></span>
+        <span class="hud-icon">🎮</span>
+        <span class="hud-title">IDENTITAS GAMER</span>
+        <span class="hud-badge">01</span>
+      </div>
+
+      <div class="form-grid">
+        <div class="field-group col-span-2">
+          <label>Foto Profil / Avatar</label>
+          <div class="avatar-upload" id="avatarUpload">
+            <div class="avatar-preview" id="avatarPreview">
+              <span class="avatar-placeholder">+</span>
+            </div>
+            <div class="avatar-info">
+              <p>Upload foto atau avatar gaming kamu</p>
+              <input type="file" id="avatarInput" accept="image/*" hidden />
+              <button class="btn-secondary small" onclick="document.getElementById('avatarInput').click()">Pilih Gambar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Nama Asli <span class="req">*</span></label>
+          <input type="text" id="realName" placeholder="Nama lengkap kamu" class="field-input" />
+        </div>
+        <div class="field-group">
+          <label>Gamertag / Username <span class="req">*</span></label>
+          <input type="text" id="gamerTag" placeholder="xX_ProGamer_Xx" class="field-input mono" />
+        </div>
+        <div class="field-group">
+          <label>Platform Utama</label>
+          <select id="platform" class="field-input">
+            <option value="">-- Pilih Platform --</option>
+            <option>PC (Steam)</option>
+            <option>PC (Epic Games)</option>
+            <option>PlayStation 5</option>
+            <option>PlayStation 4</option>
+            <option>Xbox Series X/S</option>
+            <option>Nintendo Switch</option>
+            <option>Mobile (Android)</option>
+            <option>Mobile (iOS)</option>
+            <option>Multi-Platform</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Negara / Kota</label>
+          <input type="text" id="location" placeholder="Indonesia, Jawa Tengah" class="field-input" />
+        </div>
+        <div class="field-group">
+          <label>Tahun Mulai Gaming</label>
+          <input type="number" id="startYear" placeholder="2015" min="1990" max="2025" class="field-input" />
+        </div>
+        <div class="field-group">
+          <label>Role / Spesialisasi</label>
+          <input type="text" id="role" placeholder="IGL, Sniper, Support, Carry..." class="field-input" />
+        </div>
+        <div class="field-group col-span-2">
+          <label>Bio Singkat</label>
+          <textarea id="bio" placeholder="Ceritakan sedikit tentang perjalanan gaming kamu..." class="field-input" rows="3"></textarea>
+        </div>
+        <div class="field-group">
+          <label>Discord</label>
+          <input type="text" id="discord" placeholder="username#0000" class="field-input" />
+        </div>
+        <div class="field-group">
+          <label>Twitch / YouTube / TikTok</label>
+          <input type="text" id="stream" placeholder="twitch.tv/username" class="field-input" />
+        </div>
+      </div>
+
+      <div class="section-nav-btns">
+        <div></div>
+        <button class="btn-primary" onclick="goStep('games')">Lanjut →</button>
+      </div>
+    </section>
+
+    <!-- SECTION: GAME DIMAINKAN -->
+    <section class="form-section" id="section-games">
+      <div class="section-hud">
+        <span class="hud-line"></span>
+        <span class="hud-icon">🕹</span>
+        <span class="hud-title">GAME YANG DIMAINKAN</span>
+        <span class="hud-badge">02</span>
+      </div>
+
+      <div class="game-add-form">
+        <div class="form-grid">
+          <div class="field-group">
+            <label>Nama Game <span class="req">*</span></label>
+            <input type="text" id="gameNameInput" placeholder="Mobile Legends, Valorant, PUBG..." class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Genre</label>
+            <select id="gameGenreInput" class="field-input">
+              <option value="">-- Genre --</option>
+              <option>MOBA</option>
+              <option>Battle Royale</option>
+              <option>FPS / TPS</option>
+              <option>RPG</option>
+              <option>Strategy / RTS</option>
+              <option>Fighting</option>
+              <option>Sports</option>
+              <option>Racing</option>
+              <option>Sandbox</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Platform</label>
+            <input type="text" id="gamePlatInput" placeholder="PC, Mobile, PS5..." class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Jam Bermain (Total)</label>
+            <input type="text" id="gameHoursInput" placeholder="1200 jam" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Status</label>
+            <select id="gameStatusInput" class="field-input">
+              <option>Aktif</option>
+              <option>Semi-Aktif</option>
+              <option>Tidak Aktif</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Sejak Tahun</label>
+            <input type="number" id="gameYearInput" placeholder="2020" class="field-input" />
+          </div>
+        </div>
+        <button class="btn-add" id="addGameBtn">+ Tambah Game</button>
+      </div>
+
+      <div class="items-list" id="gamesList">
+        <div class="empty-state">
+          <span>🕹</span>
+          <p>Belum ada game ditambahkan</p>
+        </div>
+      </div>
+
+      <div class="section-nav-btns">
+        <button class="btn-ghost" onclick="goStep('identity')">← Kembali</button>
+        <button class="btn-primary" onclick="goStep('stats')">Lanjut →</button>
+      </div>
+    </section>
+
+    <!-- SECTION: STATISTIK & RANK -->
+    <section class="form-section" id="section-stats">
+      <div class="section-hud">
+        <span class="hud-line"></span>
+        <span class="hud-icon">📊</span>
+        <span class="hud-title">STATISTIK & RANK</span>
+        <span class="hud-badge">03</span>
+      </div>
+
+      <div class="stats-add-form">
+        <div class="form-grid">
+          <div class="field-group">
+            <label>Game <span class="req">*</span></label>
+            <input type="text" id="statGameInput" placeholder="Nama game" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Rank Tertinggi</label>
+            <input type="text" id="statRankInput" placeholder="Mythic Glory, Radiant, Diamond..." class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Season / Tahun</label>
+            <input type="text" id="statSeasonInput" placeholder="Season 30 / 2024" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Win Rate</label>
+            <input type="text" id="statWRInput" placeholder="65%" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>K/D Ratio (jika berlaku)</label>
+            <input type="text" id="statKDInput" placeholder="3.5" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Stat Unggulan Lain</label>
+            <input type="text" id="statOtherInput" placeholder="MVP Rate 80%, Top 5 Server..." class="field-input" />
+          </div>
+        </div>
+        <button class="btn-add" id="addStatBtn">+ Tambah Statistik</button>
+      </div>
+
+      <div class="items-list" id="statsList">
+        <div class="empty-state">
+          <span>📊</span>
+          <p>Belum ada statistik ditambahkan</p>
+        </div>
+      </div>
+
+      <div class="section-nav-btns">
+        <button class="btn-ghost" onclick="goStep('games')">← Kembali</button>
+        <button class="btn-primary" onclick="goStep('achievements')">Lanjut →</button>
+      </div>
+    </section>
+
+    <!-- SECTION: ACHIEVEMENT -->
+    <section class="form-section" id="section-achievements">
+      <div class="section-hud">
+        <span class="hud-line"></span>
+        <span class="hud-icon">🏆</span>
+        <span class="hud-title">ACHIEVEMENT & PRESTASI</span>
+        <span class="hud-badge">04</span>
+      </div>
+
+      <div class="achieve-add-form">
+        <div class="form-grid">
+          <div class="field-group">
+            <label>Judul Achievement <span class="req">*</span></label>
+            <input type="text" id="achTitleInput" placeholder="Top 1 Server Indonesia" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Game Terkait</label>
+            <input type="text" id="achGameInput" placeholder="Mobile Legends" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Tanggal / Periode</label>
+            <input type="text" id="achDateInput" placeholder="Maret 2024" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Tingkat</label>
+            <select id="achLevelInput" class="field-input">
+              <option>Personal</option>
+              <option>Lokal</option>
+              <option>Nasional</option>
+              <option>Internasional</option>
+            </select>
+          </div>
+          <div class="field-group col-span-2">
+            <label>Deskripsi</label>
+            <textarea id="achDescInput" placeholder="Jelaskan pencapaian ini..." class="field-input" rows="2"></textarea>
+          </div>
+        </div>
+        <button class="btn-add" id="addAchBtn">+ Tambah Achievement</button>
+      </div>
+
+      <div class="items-list" id="achievementsList">
+        <div class="empty-state">
+          <span>🏆</span>
+          <p>Belum ada achievement ditambahkan</p>
+        </div>
+      </div>
+
+      <div class="section-nav-btns">
+        <button class="btn-ghost" onclick="goStep('stats')">← Kembali</button>
+        <button class="btn-primary" onclick="goStep('tournaments')">Lanjut →</button>
+      </div>
+    </section>
+
+    <!-- SECTION: TURNAMEN -->
+    <section class="form-section" id="section-tournaments">
+      <div class="section-hud">
+        <span class="hud-line"></span>
+        <span class="hud-icon">⚔️</span>
+        <span class="hud-title">RIWAYAT TURNAMEN</span>
+        <span class="hud-badge">05</span>
+      </div>
+
+      <div class="tournament-add-form">
+        <div class="form-grid">
+          <div class="field-group">
+            <label>Nama Turnamen <span class="req">*</span></label>
+            <input type="text" id="tourNameInput" placeholder="Piala Walikota eSports 2024" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Game</label>
+            <input type="text" id="tourGameInput" placeholder="PUBG Mobile" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Peringkat / Hasil</label>
+            <input type="text" id="tourResultInput" placeholder="Juara 1, Top 8, Runner-Up..." class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Skala</label>
+            <select id="tourScaleInput" class="field-input">
+              <option>Kampus / Komunitas</option>
+              <option>Kota</option>
+              <option>Provinsi</option>
+              <option>Nasional</option>
+              <option>Internasional</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Tanggal</label>
+            <input type="text" id="tourDateInput" placeholder="15 Juni 2024" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Nama Tim (jika ada)</label>
+            <input type="text" id="tourTeamInput" placeholder="Team NoobSlayer" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Hadiah (jika ada)</label>
+            <input type="text" id="tourPrizeInput" placeholder="Rp 5.000.000" class="field-input" />
+          </div>
+          <div class="field-group">
+            <label>Peran dalam Tim</label>
+            <input type="text" id="tourRoleInput" placeholder="Captain, Mid, IGL..." class="field-input" />
+          </div>
+        </div>
+        <button class="btn-add" id="addTourBtn">+ Tambah Turnamen</button>
+      </div>
+
+      <div class="items-list" id="tournamentsList">
+        <div class="empty-state">
+          <span>⚔️</span>
+          <p>Belum ada turnamen ditambahkan</p>
+        </div>
+      </div>
+
+      <div class="section-nav-btns">
+        <button class="btn-ghost" onclick="goStep('achievements')">← Kembali</button>
+        <button class="btn-primary" onclick="goStep('screenshots')">Lanjut →</button>
+      </div>
+    </section>
+
+    <!-- SECTION: SCREENSHOTS -->
+    <section class="form-section" id="section-screenshots">
+      <div class="section-hud">
+        <span class="hud-line"></span>
+        <span class="hud-icon">📸</span>
+        <span class="hud-title">SCREENSHOTS & BUKTI</span>
+        <span class="hud-badge">06</span>
+      </div>
+
+      <div class="screenshots-area">
+        <div class="drop-zone" id="dropZone">
+          <div class="drop-zone-inner">
+            <span class="drop-icon">📂</span>
+            <p class="drop-text">Drag & drop screenshot ke sini</p>
+            <p class="drop-sub">atau</p>
+            <button class="btn-secondary" onclick="document.getElementById('ssInput').click()">Pilih File</button>
+            <input type="file" id="ssInput" accept="image/*" multiple hidden />
+            <p class="drop-hint">PNG, JPG, GIF — max 10MB per file</p>
+          </div>
+        </div>
+
+        <div class="ss-grid" id="ssGrid"></div>
+      </div>
+
+      <div class="section-nav-btns">
+        <button class="btn-ghost" onclick="goStep('tournaments')">← Kembali</button>
+        <button class="btn-primary" id="finishBtn" onclick="showPreview()">✔ Selesai & Preview</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PREVIEW PANEL -->
+  <div class="preview-panel" id="previewPanel">
+    <div class="preview-header">
+      <span>Preview CV</span>
+      <button class="btn-icon" onclick="closePreview()">✕</button>
+    </div>
+    <div class="preview-body" id="previewBody">
+      <!-- CV preview rendered here -->
+    </div>
+  </div>
+
+</div>
+
+<!-- CV PRINT TEMPLATE (hidden, used for PDF) -->
+<div id="cvPrintArea" class="cv-print-area">
+  <!-- rendered by JS -->
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
