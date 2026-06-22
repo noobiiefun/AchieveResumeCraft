@@ -155,7 +155,7 @@ Semua data disimpan di `localStorage` (key: `arc-state`) dalam format berikut:
 
 <div align="center">
 
-Dibuat oleh **Omon** · [@noobiiefun](https://github.com/noobiiefun)
+Dibuat oleh [@noobiiefun](https://github.com/noobiiefun)
 
 *"Level up your gaming resume."*
 
